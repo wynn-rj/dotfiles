@@ -21,7 +21,6 @@
     ~/.offlineimap/macros.py: offlineimap/macros.py
     ~/.radare2rc: radare2rc
     ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
     ~/.zshrc: zshrc
     ~/.config/cava: config/cava
     ~/.config/compton: config/compton

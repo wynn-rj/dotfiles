@@ -27,8 +27,6 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'shime/vim-livedown'
 " Plugins for Linux Kernel development
 Plugin 'joe-skb7/cscope-maps'
-" You complete me - completion
-Plugin 'Valloric/YouCompleteMe'
 " Color highlighting
 Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/base16-vim'
@@ -327,6 +325,7 @@ au FileType markdown nnoremap <leader>r :LivedownToggle<cr>
 
 " Neovim
 tnoremap <Esc> <C-\><C-n>
+let g:ale_use_deprecated_neovim = 1
 
 " netrw
 let g:netrw_banner = 0
@@ -337,4 +336,5 @@ let g:netrw_winsize = 20
 "  Pre-map refresh so Netrw it doesn't bind <c-l> when it loads
 nmap <unique> <c-e> <Plug>NetrwRefresh 
 map <leader>nn :Lexplore<cr>
+
 
