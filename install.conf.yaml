@@ -28,6 +28,7 @@
     ~/.config/i3: config/i3
     ~/.config/nvim: config/nvim
     ~/.config/polybar: config/polybar
+    /etc/wsl.conf: wsl/wsl.conf
 
 - shell: 
     - 
