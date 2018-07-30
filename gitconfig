@@ -1,6 +1,6 @@
 [user]
-	name = Will Sloan
-	email = wsloan@cc-sw.com
+	email = rwynn@cc-sw.com
+	name = RJ Wynn
 [push]
 	default = simple
 [alias]
@@ -9,6 +9,9 @@
     diffn = diff --cached
 [core]
     pager = grep -v -E \"(diff --git)\" | vim -R -c 'set ft=diff' - 
+    editor = nvim
+    autocrlf = input
+	excludefile = ~/.dotfiles/global.gitignore
 [pager]
     log = false
     branch = false
@@ -19,4 +22,4 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    smudge = git-lfs smudge -- %f
