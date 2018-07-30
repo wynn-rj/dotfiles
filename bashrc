@@ -105,3 +105,6 @@ export EDITOR=vim
 
 # alias ping 8.8.8.8 for ease of use
 alias 'ping8'='ping 8.8.8.8'
+
+tmux
+zsh
