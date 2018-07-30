@@ -95,7 +95,7 @@ SAVEHIST=$HISTSIZE
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo ssh-agent history wd zsh_reload)
+plugins=(git sudo history wd zsh_reload)
 
 
 # source oh-my-zsh setup
@@ -134,10 +134,11 @@ alias sourcez="source ~/.zshrc"
 alias grep="grep -i --color=auto"
 alias watch="watch -n1"
 alias ls="ls --color -l"
-alias diff="colordiff"
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg="ffmpeg -hide_banner"
 alias sed="sed -r"
+alias vim="nvim"
+alias cdc="cd /c"
 
 alias music="ncmpcpp"
 # Linux-specific keyboard speed command
@@ -150,3 +151,13 @@ alias l="less"
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Zsh Syntax Highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Zsh Autocompletion
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+cowspeakfortune
+
+# Allow docker
+export DOCKER_HOST=tcp://0.0.0.0:2375
