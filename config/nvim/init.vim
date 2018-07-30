@@ -42,6 +42,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 " Golang developemtn
 Plugin 'fatih/vim-go'
+" Line completion
+Plugin 'Valloric/YouCompleteMe'
+" Rainbow Parentheses
+Plugin 'kien/rainbow_parentheses.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -131,6 +135,11 @@ colorscheme base16-eighties
 
 " Preserve Transparency on URxvt
 hi Normal ctermbg=none
+
+" Highlight overly long lines
+highlight OverLength ctermbg=red ctermfg=white guibg=#c44a4a
+match OverLength /\%>80v.\+/
+map <leader>hh :highlight OverLength none<cr>
 
 """""""""""""""""""""
 " Moving around
@@ -274,19 +283,61 @@ map <leader>, :TabooRename
 let g:python_host_prog = "/usr/bin/python2"
 let g:python3_host_prog = "/usr/bin/python3"
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-map <leader>g :YcmCompleter GoTo<CR>
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf=0
+map <leader>. :YcmCompleter GoTo<cr>
+map <leader>yg :YcmCompleter GoTo<cr>
+map <leader>yi :YcmCompleter GoToInclude<cr>
+map <leader>yd :YcmCompleter GoToDeclaration<cr>
+map <leader>yt :YcmCompleter GetType<cr>
+map <leader>yo :YcmCompleter GetDoc<cr>
+map <leader>y0 :let ycm_auto_trigger = 0<cr>
+map <leader>y1 :let ycm_auto_trigger = 1<cr>
 
 " Fugitive (Git Wrapper)
 " Open diffs in vertical splits
 set diffopt+=vertical
+
+" Rainbow parentheses
+func! DisplayRainbow()
+    :RainbowParenthesesLoadRound
+    :RainbowParenthesesLoadSquare
+    :RainbowParenthesesLoadBraces
+    :RainbowParenthesesLoadChevrons
+    :RainbowParenthesesToggle
+endfunction
+map <leader>tr :call DisplayRainbow()<cr>
+let g:rbpt_colorpairs = [
+    \ ['brown',       'SeaGreen3'],
+    \ ['Darkblue',    'DarkOrchid3'],
+    \ ['darkgray',    'cyan'],
+    \ ['darkgreen',   'LightGray'],
+    \ ['darkcyan',    'gold'],
+    \ ['darkred',     'RoyalBlue3'],
+    \ ['darkmagenta', 'SeaGreen3'],
+    \ ['brown',       'DarkOrchid3'],
+    \ ['gray',        'cyan'],
+    \ ['black',       'LightGray'],
+    \ ['darkmagenta', 'gold'],
+    \ ['Darkblue',    'RoyalBlue3'],
+    \ ['darkgreen',   'SeaGreen3'],
+    \ ['darkcyan',    'DarkOrchid3'],
+    \ ['darkred',     'cyan'],
+    \ ['red',         'LightGray'],
+    \ ]
 
 " Ack/Ag (Silver Searcher)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" Assembly
+au BufEnter *.S
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set expandtab
 
 " Python
 au BufNewFile,BufRead *.py
@@ -323,6 +374,16 @@ au BufNewFile,BufRead *.c nmap <leader>d :make! deploy<cr>
 au FileType markdown nnoremap <leader>m :make!<cr>
 au FileType markdown nnoremap <leader>r :LivedownToggle<cr>
 
+" Git Commit
+au FileType gitcommit setlocal spell
+
+" Fix SConstruct
+au FileType conf if expand('%:t') == 'SConstruct' | set ft=python | endif
+" map <Leader>sc :if expand('%:t') == 'SConstruct' | set ft=python | endif<cr>
+
+
+
+
 " Neovim
 tnoremap <Esc> <C-\><C-n>
 let g:ale_use_deprecated_neovim = 1
@@ -337,4 +398,7 @@ let g:netrw_winsize = 20
 nmap <unique> <c-e> <Plug>NetrwRefresh 
 map <leader>nn :Lexplore<cr>
 
-
+set nu
+let c_space_errors = 1
+if expand('%:t') == 'SConscript' | set ft=python | endif
+if expand('%:t') == 'SConstruct' | set ft=python | endif
