@@ -37,7 +37,7 @@ Plugin 'sheerun/vim-polyglot'
 " Simple statusline
 Plugin 'itchyny/lightline.vim'
 " Git features
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 " Silver-Searcher
 Plugin 'mileszs/ack.vim'
 " Golang developemtn
@@ -283,7 +283,7 @@ map <leader>, :TabooRename
 let g:python_host_prog = "/usr/bin/python2"
 let g:python3_host_prog = "/usr/bin/python3"
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf=0
 map <leader>. :YcmCompleter GoTo<cr>
