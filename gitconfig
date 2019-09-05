@@ -7,6 +7,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     find = log --color --pretty=\"format:%Cred%h %Creset%s %Cblue<%an>\" --grep
     diffn = diff --cached
+    stat = status -s -b
 [core]
     pager = grep -v -E \"(diff --git)\" | vim -R -c 'set ft=diff' - 
     editor = nvim
