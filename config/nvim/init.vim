@@ -402,3 +402,6 @@ set nu
 let c_space_errors = 1
 if expand('%:t') == 'SConscript' | set ft=python | endif
 if expand('%:t') == 'SConstruct' | set ft=python | endif
+
+set nomodeline
+set modelines=0
