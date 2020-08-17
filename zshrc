@@ -2,11 +2,6 @@
 ## User-defined functions
 #
 
-# add push notifications over Pushover
-push() {
-  curl -s -F "token=afgq15q22847cg8e1xjpmjfug5ran3" -F "user=u2f4smknjr4z5mhc3xque2jzp7ap7n" -F "title=Work Blackbox" -F "message=$1" https://api.pushover.net/1/messages.json
-}
-
 open() {
   zsh -c "
     xdg-open \"$1\" &
@@ -162,4 +157,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=102"
 cowspeakfortune
 
 # Allow docker
-export DOCKER_HOST=tcp://0.0.0.0:2375

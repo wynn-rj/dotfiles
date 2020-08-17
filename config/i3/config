@@ -10,14 +10,15 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term kitty
+
+hide_edge_borders both
+
 # Your preferred application launcher
-set $menu rofi -show drun -font "Source Code Pro 16"
+set $menu exec rofi -show drun -lines 3 -width 50
+
 # Your preferred way to lock the screen
 set $locker /home/will/.scripts/lock.sh
-
-# Font
-font pango:San Francisco Text 14
 
 ### Key bindings
 #
@@ -132,7 +133,7 @@ font pango:San Francisco Text 14
 #
 #new_window 1pixel
 for_window [class="^.*"] border pixel 4
-gaps inner 30
+#gaps inner 30
 
 #
 # Colors
@@ -140,8 +141,14 @@ gaps inner 30
 
 # Highlight focused window border
 #client.focused  #000000 #A443BF #000000 #3F85CB
-client.focused  #000000 #ED7718 #000000 #3F85CB
+client.focused  #000000 #4decec #000000 #6699cc
 
+bar {
+    status_command i3status
+    position top
+    workspace_buttons yes
+    tray_output primary
+}
 
 #
 # Resizing containers:
@@ -151,6 +158,7 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
+#
     bindsym $left resize shrink width 5 px or 5 ppt
     bindsym $down resize grow height 5 px or 5 ppt
     bindsym $up resize shrink height 5 px or 5 ppt
@@ -180,13 +188,11 @@ bindsym XF86AudioLowerVolume exec mpc volume -5
 
 bindsym XF86AudioStop exec $locker
 
-# Start top bar
-exec --no-startup-id /usr/bin/polybar top &
 # Set CapsLock => Escape
 exec --no-startup-id /usr/bin/setxkbmap -layout us -option caps:escape
 # Set key repeat delay and speed
 exec --no-startup-id /usr/bin/xset r rate 200 40
-# Start compositor
-exec --no-startup-id /usr/bin/compton --config /home/will/.config/compton/compton.conf
 # Set wallpaper
 exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
+# Start VMWare clipboard daemon
+exec --no-startup-id /usr/bin/vmware-user-suid-wrapper
