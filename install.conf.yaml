@@ -15,11 +15,8 @@
     ~/.bashrc: bashrc
     ~/.dir_colors: dir_colors
     ~/.gitconfig: gitconfig
-    ~/.muttrc: muttrc
-    ~/.offlineimaprc: offlineimaprc
-    ~/.offlineimap/ccsw_pass.gpg: offlineimap/ccsw_pass.gpg
-    ~/.offlineimap/macros.py: offlineimap/macros.py
     ~/.radare2rc: radare2rc
+    ~/.scripts: scripts
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
     ~/.config/cava: config/cava
@@ -28,7 +25,7 @@
     ~/.config/i3: config/i3
     ~/.config/nvim: config/nvim
     ~/.config/polybar: config/polybar
-    /etc/wsl.conf: wsl/wsl.conf
+    ~/.config/kitty: config/kitty
 
 - shell: 
     - 
@@ -39,3 +36,5 @@
     - [nvim +PluginInstall +qall, Install neovim plugins]
     - [./oh_my_zsh_install.sh, Install Oh My ZSH]
 
+- shell:
+    - command: git submodule update --init --recursive

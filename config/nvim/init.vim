@@ -40,10 +40,8 @@ Plugin 'itchyny/lightline.vim'
 "Plugin 'tpope/vim-fugitive'
 " Silver-Searcher
 Plugin 'mileszs/ack.vim'
-" Golang developemtn
-Plugin 'fatih/vim-go'
 " Line completion
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " Rainbow Parentheses
 Plugin 'kien/rainbow_parentheses.vim'
 

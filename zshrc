@@ -46,6 +46,13 @@ ssh_clean() {
     sed -i "/$1/,+1 d" ~/.ssh/known_hosts
 }
 
+peek() {
+    cnt=160
+    if [ $# -gt 1 ]; then
+        cnt=$(($2 * 16))
+    fi
+    hexdump -C $1 -n $cnt | head -n -1
+}
 #
 ## Oh-My-Zsh Configuration
 #
@@ -148,12 +155,12 @@ eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Zsh Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.dotfiles/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Zsh Autocompletion
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.dotfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=102"
 
-cowspeakfortune
-
-# Allow docker
+if hash fortune 2>/dev/null && hash cowsay 2>/dev/null; then
+    cowspeakfortune
+fi
