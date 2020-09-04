@@ -1,0 +1,33 @@
+#!/bin/bash
+
+skip_line() {
+    # Add files you don't want to see here
+    [[ "$@" =~ .*rufus_extraction.* ]] && return
+    false
+}
+
+filtered_read() {
+    while IFS= read -r line; do
+        if skip_line $line; then
+            continue
+        fi
+        echo "$line"
+    done <<< "$(ls -Al --color=always $1 | awk -F' -> ' '{print $1}')"
+}
+
+read_dir() {
+    if [ -d $1 ] && [ -L $1 ] && [ -e $1 ]; then
+        filtered_read "$1/"
+        return
+    fi
+    filtered_read $1
+}
+
+args=$@
+if [ $# -eq 0 ]; then
+    args="."
+fi
+
+for directory in $args; do
+    read_dir $directory
+done

@@ -26,6 +26,7 @@
     ~/.config/nvim: config/nvim
     ~/.config/polybar: config/polybar
     ~/.config/kitty: config/kitty
+    ~/.bin: bin
 
 - shell: 
     - 
