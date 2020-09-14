@@ -17,15 +17,12 @@ hide_edge_borders both
 # Your preferred application launcher
 set $menu exec rofi -show drun -lines 3 -width 50
 
-# Your preferred way to lock the screen
-set $locker /home/will/.scripts/lock.sh
-
 ### Key bindings
 #
 # Basics:
 #
     # start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Return exec ~/.dotfiles/i3_dir_helper.sh $term; exec $term
 
     # kill focused window
     bindsym $mod+Shift+w kill

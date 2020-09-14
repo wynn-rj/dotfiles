@@ -154,6 +154,11 @@ alias l="less"
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# i3 dir changer helper
+if [ -f /tmp/.i3_i_am_here ]; then
+    cd "$(cat /tmp/.i3_i_am_here)"
+fi
+
 # Zsh Syntax Highlighting
 source $HOME/.dotfiles/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Zsh Autocompletion
